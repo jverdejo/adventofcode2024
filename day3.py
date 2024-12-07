@@ -16,16 +16,16 @@ test_str = """xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mu
 matches = re.findall(regex, test_str)
 total_part_1 = 0
 total_part_2 = 0
-enabled=True
+enabled = True
 
 for match in matches:
-    action,_,empty,_,x, y = match
+    action, _, empty, _, x, y = match
     # Use a flag to enbaled or disabled future muls
-    if action=="do" and empty=="()":
-        enabled=True 
-    elif action=="don't" and empty=="()":
-        enabled=False
-    elif action== "mul":
+    if action == "do" and empty == "()":
+        enabled = True
+    elif action == "don't" and empty == "()":
+        enabled = False
+    elif action == "mul":
         total_part_1 += int(x) * int(y)
         if enabled:
             total_part_2 += int(x) * int(y)
